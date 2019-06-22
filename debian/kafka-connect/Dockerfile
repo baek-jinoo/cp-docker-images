@@ -37,3 +37,4 @@ RUN echo "===> Installing GCS Sink Connector ..."
 RUN confluent-hub install confluentinc/kafka-connect-gcs:latest --no-prompt
 RUN echo "===> Installing Bigquery Sink Connector ..."
 RUN confluent-hub install wepay/kafka-connect-bigquery:1.1.0 --no-prompt
+RUN confluent-hub install confluentinc/kafka-connect-jdbc:5.2.2 --no-prompt
