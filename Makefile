@@ -22,7 +22,8 @@ CONFLUENT_PACKAGES_REPO ?= http://packages.confluent.io
 # Set to false for public releases
 ALLOW_UNSIGNED ?= false
 
-REPOSITORY ?= confluentinc
+REPOSITORY ?= jinoo
+#REPOSITORY ?= confluentinc
 
 # Platform-specific version labels for SNAPSHOT packaging. Not necessary when building from public releases.
 CONFLUENT_MVN_LABEL ?=
