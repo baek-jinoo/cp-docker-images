@@ -26,15 +26,10 @@ LABEL io.confluent.docker.build.number=$BUILD_NUMBER
 
 ENV COMPONENT=kafka-connect
 
-RUN echo "===> Installing JDBC, Elasticsearch and Hadoop connectors ..." \
-    && apt-get -qq update \
-    && apt-get install -y \
-        confluent-kafka-connect-jdbc=${CONFLUENT_VERSION}${CONFLUENT_PLATFORM_LABEL}-${CONFLUENT_DEB_VERSION} \
-    && echo "===> Cleaning up ..."  \
-    && apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/*
-
 RUN echo "===> Installing GCS Sink Connector ..."
 RUN confluent-hub install confluentinc/kafka-connect-gcs:latest --no-prompt
 RUN echo "===> Installing Bigquery Sink Connector ..."
 RUN confluent-hub install wepay/kafka-connect-bigquery:1.1.0 --no-prompt
 RUN confluent-hub install confluentinc/kafka-connect-jdbc:5.2.2 --no-prompt
+RUN apt-get install -y wget \
+    && wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.16/mysql-connector-java-8.0.16.jar -P /usr/share/confluent-hub-components \
